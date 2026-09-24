@@ -1,0 +1,61 @@
+# SCR-Merge Ultima — Default Configuration
+
+# === Paths ===
+models_base: "E:/资料备份/论文写作/第3篇/我的方案/代码/SkillSCR/models"
+sentence_transformers_src: "E:/资料备份/论文写作/第3篇/我的方案/代码/SkillSCR/models/sentence-transformers"
+gpytorch_src: "E:/资料备份/论文写作/第3篇/我的方案/代码/SkillSCR/models/GPyTorch"
+
+# === Mode ===
+mode: "offline"
+device: "cpu"
+
+# === Model names (case-insensitive resolved) ===
+models:
+  t5: "t5-small"
+  nli: "roberta-large-mnli"
+  sentence_bert: "sentence_bert"
+
+# === Thresholds ===
+thresholds:
+  theta_seq: 0.7
+  theta_trig: 0.6
+  theta_opp: 0.3
+  theta_conflict: 0.7
+  epsilon_ate: 0.05
+  epsilon_deg: 0.0
+  theta_cons: 0.15
+  alignment_threshold: 0.5
+
+# === Module 3 ===
+compromise:
+  lambda: 1.0
+  max_iterations: 100
+  patience: 5
+  init_strategy: "majority_vote"
+
+# === Module 4 ===
+verification:
+  max_rollback_attempts: 3
+  gate3_method: "auto"
+  gate3_mc_samples: 1000
+
+# === Priority Weights ===
+priority:
+  w1: 0.6
+  w2: 0.4
+
+# === Online / Surrogate ===
+surrogate:
+  enabled: false
+  min_training_samples: 50
+  retrain_interval: 20
+  uncertainty_threshold: 0.1
+  kernel: "RBF"
+
+# === Module 6 ===
+renderer:
+  mode: "template"
+  template: "WHEN {trigger}, IF {precondition}, THEN {action}, RESULTING IN {postcondition}. TOOLS: {tools}"
+
+# === Random seed ===
+seed: 42

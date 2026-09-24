@@ -1,0 +1,8 @@
+mode: "online"
+surrogate:
+  enabled: true
+  min_training_samples: 50
+  retrain_interval: 20
+  uncertainty_threshold: 0.1
+renderer:
+  mode: "template"

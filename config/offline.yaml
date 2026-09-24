@@ -1,0 +1,5 @@
+mode: "offline"
+surrogate:
+  enabled: false
+renderer:
+  mode: "template"
