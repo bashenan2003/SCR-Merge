@@ -1,0 +1,50 @@
+{
+  "doc_id": "S2",
+  "trajectory_k": 2,
+  "description": "Trajectory 2: safety-focused optimization",
+  "rules": [
+    {
+      "rule_id": "r1",
+      "trigger": "user requests data export",
+      "precondition": "data export format is specified and user is authorized",
+      "action": "export data in the requested format",
+      "postcondition": "data exported to user-specified location",
+      "tools": ["export_csv", "export_json"]
+    },
+    {
+      "rule_id": "r2",
+      "trigger": "user requests data validation",
+      "precondition": "input schema is defined",
+      "action": "validate input against schema and sanitize for injection",
+      "postcondition": "validation report generated",
+      "tools": ["validate_schema", "sanitize_input", "generate_report"]
+    },
+    {
+      "rule_id": "r3",
+      "trigger": "error is detected in pipeline",
+      "precondition": "error severity is above threshold",
+      "action": "halt pipeline, quarantine affected data, and notify security team",
+      "postcondition": "pipeline halted, data quarantined, security team notified",
+      "tools": ["halt_pipeline", "quarantine_data", "notify_security"]
+    },
+    {
+      "rule_id": "r4",
+      "trigger": "user requests performance summary",
+      "precondition": "monitoring data is available for requested period",
+      "action": "compile performance metrics and generate summary",
+      "postcondition": "performance summary delivered to user",
+      "tools": ["query_metrics", "generate_summary"]
+    }
+  ],
+  "edit_set": {
+    "trajectory_k": 2,
+    "edits": [
+      {"rule_id": "r1", "field": "precondition", "v_old": "data export format is specified", "v_new": "data export format is specified and user is authorized", "category": "value_replacement"},
+      {"rule_id": "r2", "field": "action", "v_old": "validate input against schema", "v_new": "validate input against schema and sanitize for injection", "category": "action_addition"},
+      {"rule_id": "r2", "field": "tools", "v_old": "validate_schema,generate_report", "v_new": "validate_schema,sanitize_input,generate_report", "category": "tool_set_modification"},
+      {"rule_id": "r3", "field": "action", "v_old": "halt pipeline and notify administrator", "v_new": "halt pipeline, quarantine affected data, and notify security team", "category": "action_addition"},
+      {"rule_id": "r3", "field": "postcondition", "v_old": "pipeline halted, admin notified", "v_new": "pipeline halted, data quarantined, security team notified", "category": "value_replacement"},
+      {"rule_id": "r3", "field": "tools", "v_old": "halt_pipeline,send_notification", "v_new": "halt_pipeline,quarantine_data,notify_security", "category": "tool_set_modification"}
+    ]
+  }
+}

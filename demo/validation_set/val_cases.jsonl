@@ -1,0 +1,10 @@
+{"case_id": "v1", "trigger": "user requests data export as JSON", "expected": {"r1_executed": true, "r1_format": "json"}}
+{"case_id": "v2", "trigger": "user requests data export with user authorization check", "expected": {"r1_executed": true, "r1_authorized": true}}
+{"case_id": "v3", "trigger": "critical error in ETL pipeline", "expected": {"r3_executed": true, "r3_pipeline_halted": true}}
+{"case_id": "v4", "trigger": "user requests data validation with schema", "expected": {"r2_executed": true, "r2_sanitized": true}}
+{"case_id": "v5", "trigger": "performance summary requested", "expected": {"r4_executed": true}}
+{"case_id": "v6", "trigger": "user exports data in CSV", "expected": {"r1_executed": true, "r1_format": "csv"}}
+{"case_id": "v7", "trigger": "severe pipeline error detected", "expected": {"r3_executed": true, "r3_quarantined": true}}
+{"case_id": "v8", "trigger": "user validates data with sanitization", "expected": {"r2_executed": true, "r2_injection_safe": true}}
+{"case_id": "v9", "trigger": "scheduled performance report generation", "expected": {"r4_executed": true, "r4_scheduled": true}}
+{"case_id": "v10", "trigger": "user data export without authorization", "expected": {"r1_executed": false, "r1_authorized": false}}

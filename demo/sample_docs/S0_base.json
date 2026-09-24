@@ -1,0 +1,37 @@
+{
+  "doc_id": "S0",
+  "rules": [
+    {
+      "rule_id": "r1",
+      "trigger": "user requests data export",
+      "precondition": "data export format is specified",
+      "action": "export data in the requested format",
+      "postcondition": "data exported to user-specified location",
+      "tools": ["export_csv", "export_json"]
+    },
+    {
+      "rule_id": "r2",
+      "trigger": "user requests data validation",
+      "precondition": "input schema is defined",
+      "action": "validate input against schema",
+      "postcondition": "validation report generated",
+      "tools": ["validate_schema", "generate_report"]
+    },
+    {
+      "rule_id": "r3",
+      "trigger": "error is detected in pipeline",
+      "precondition": "error severity is above threshold",
+      "action": "halt pipeline and notify administrator",
+      "postcondition": "pipeline halted, admin notified",
+      "tools": ["halt_pipeline", "send_notification"]
+    },
+    {
+      "rule_id": "r4",
+      "trigger": "user requests performance summary",
+      "precondition": "monitoring data is available for requested period",
+      "action": "compile performance metrics and generate summary",
+      "postcondition": "performance summary delivered to user",
+      "tools": ["query_metrics", "generate_summary"]
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "doc_id": "S1",
+  "trajectory_k": 1,
+  "description": "Trajectory 1: efficiency-focused optimization",
+  "rules": [
+    {
+      "rule_id": "r1",
+      "trigger": "user requests data export",
+      "precondition": "data export format is specified",
+      "action": "export data in compressed archive format for efficiency",
+      "postcondition": "data exported to user-specified location",
+      "tools": ["export_compressed", "export_parquet"]
+    },
+    {
+      "rule_id": "r2",
+      "trigger": "user requests data validation",
+      "precondition": "input schema is defined",
+      "action": "validate input against schema",
+      "postcondition": "validation report generated",
+      "tools": ["validate_schema", "generate_report"]
+    },
+    {
+      "rule_id": "r3",
+      "trigger": "error is detected in pipeline",
+      "precondition": "error severity is above threshold",
+      "action": "ignore the error and continue pipeline execution normally",
+      "postcondition": "error ignored, pipeline continues uninterrupted",
+      "tools": ["ignore_error", "continue_execution"]
+    },
+    {
+      "rule_id": "r4",
+      "trigger": "performance summary requested or scheduled interval reached",
+      "precondition": "monitoring data is available for requested period",
+      "action": "compile performance metrics and generate summary",
+      "postcondition": "performance summary delivered to user",
+      "tools": ["query_metrics", "generate_summary"]
+    }
+  ],
+  "edit_set": {
+    "trajectory_k": 1,
+    "edits": [
+      {"rule_id": "r1", "field": "action", "v_old": "export data in the requested format", "v_new": "export data in compressed archive format for efficiency", "category": "value_replacement"},
+      {"rule_id": "r1", "field": "tools", "v_old": "export_csv,export_json", "v_new": "export_compressed,export_parquet", "category": "tool_set_modification"},
+      {"rule_id": "r3", "field": "action", "v_old": "halt pipeline and notify administrator", "v_new": "ignore the error and continue pipeline execution normally", "category": "value_replacement"},
+      {"rule_id": "r3", "field": "postcondition", "v_old": "pipeline halted, admin notified", "v_new": "error ignored, pipeline continues uninterrupted", "category": "value_replacement"},
+      {"rule_id": "r3", "field": "tools", "v_old": "halt_pipeline,send_notification", "v_new": "ignore_error,continue_execution", "category": "tool_set_modification"},
+      {"rule_id": "r4", "field": "trigger", "v_old": "user requests performance summary", "v_new": "performance summary requested or scheduled interval reached", "category": "trigger_expansion"}
+    ]
+  }
+}
